@@ -17,14 +17,22 @@ app.get('/', (req, res) => {
   res.send('hello world')
 })
 
-// 登入頁面
+// 登入
 app.get('/users/login', (req, res) => {
   res.render('login')
 })
 
-// 註冊頁面
+app.post('users/login', (req, res) => {
+  res.send('login')
+})
+
+// 註冊
 app.get('/users/register', (req, res) => {
   res.render('register')
+})
+
+app.post('users/register', (req, res) => {
+  res.send('register')
 })
 
 app.listen(PORT, () => {
