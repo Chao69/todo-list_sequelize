@@ -12,8 +12,19 @@ app.set('view engine', 'hbs')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 
+// 根目錄
 app.get('/', (req, res) => {
   res.send('hello world')
+})
+
+// 登入頁面
+app.get('/users/login', (req, res) => {
+  res.render('login')
+})
+
+// 註冊頁面
+app.get('/users/register', (req, res) => {
+  res.render('register')
 })
 
 app.listen(PORT, () => {
