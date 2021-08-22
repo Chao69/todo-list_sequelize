@@ -19,7 +19,13 @@ app.use(methodOverride('_method'))
 
 // 根目錄
 app.get('/', (req, res) => {
-  res.send('hello world')
+  return Todo.findAll({
+    raw: true,
+    nest: true
+  })
+    .then((todos) => {return res.render('index', { todos: todos })})
+    .catch((error) => { return res.status(422).json(error)})
+  
 })
 
 // 登入
@@ -44,6 +50,14 @@ app.post('/users/register', (req, res) => {
     password
   })
     .then(user => res.redirect('/'))
+})
+
+// 詳細頁
+app.get('/todos/:id', (req, res) => {
+  const id = req.params.id
+  return Todo.findByPk(id)
+    .then(todo => res.render('detail', { todo: todo.toJSON( )}))
+    .catch(error => console.log(error))
 })
 
 app.listen(PORT, () => {
