@@ -35,6 +35,7 @@ Node.js v10.24.1
 - 將終端機(terminal)顯示的 http://localhost:3000 複製到瀏覽器即可體驗
 
 體驗帳戶：
+
 root@example.com
 
 123456
